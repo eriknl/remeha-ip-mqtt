@@ -30,12 +30,16 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    remehaip.cpp \
-    qpaho.cpp
+    datapublisher.cpp \
+    datasubscriber.cpp \
+    remehaippublisher.cpp \
+    pahosubscriber.cpp
 
 HEADERS += \
-    remehaip.h \
-    qpaho.h
+    datapublisher.h \
+    datasubscriber.h \
+    remehaippublisher.h \
+    pahosubscriber.h
 
 DISTFILES += \
     README.md \
