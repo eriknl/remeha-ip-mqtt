@@ -31,15 +31,14 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
     QTextStream qout(stdout);
-    if (argc < 6)
-    {
+    if (argc < 6) {
         qout << "5 parameters required: " << argv[0] << " <Remeha host> <Remeha port> <MQTT broker host> <MQTT clientid> <MQTT topic>\n";
         qout.flush();
         return 1;
     }
 
     QString message;
-    QString topic;
+    QString topic = argv[5];
     float flowTemp, returnTemp, dhwTemp, roomTemp, roomSetpoint, boilerTemp;
 
     RemehaIP remehaConnection(argv[1], atoi(argv[2]), 10);

@@ -49,8 +49,7 @@ QPaho::~QPaho()
 
 void QPaho::publishMessage(QString topic, QString message)
 {
-    if (!MQTTClient_isConnected(client))
-    {
+    if (!MQTTClient_isConnected(client)) {
         qDebug() << "MQTTClient was disconnected, reconnecting";
         MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
         conn_opts.keepAliveInterval = 120;
