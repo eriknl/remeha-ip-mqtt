@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	RemehaIpPublisher remehaPublisher(argv[5], argv[1], atoi(argv[2]), 30, 10000);
+	RemehaIpPublisher remehaPublisher(argv[5], argv[1], atoi(argv[2]), 30, 60000);
 	PahoSubscriber pahoSubscriber(argv[3], argv[4]);
 
 	pahoSubscriber.addPublisher(&remehaPublisher);

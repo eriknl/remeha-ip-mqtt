@@ -81,6 +81,12 @@ bool RemehaIpPublisher::getCurrentReturn(float *flowTemp, float *returnTemp, flo
 		*dhwTemp = (float)temp/100;
 		temp = REMEHA_SHORT(reply.data() + 27);
 		*roomSetpoint = (float)temp/100;
+		
+		if (*roomTemp > 50 || *roomSetpoint > 50) {
+			// Filter false readings that still produce a valid crc
+			return false;
+		}
+		
 		return true;
 	}
 	return false;
@@ -102,6 +108,7 @@ bool RemehaIpPublisher::sendMessageReply(QByteArray msg, QByteArray *reply)
 				success = true;
 			} else {
 				qDebug() << "CRC failed";
+				QThread::msleep(100);
 			}
 		}
 	}
