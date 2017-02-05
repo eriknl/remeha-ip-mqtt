@@ -82,7 +82,7 @@ bool RemehaIpPublisher::getCurrentReturn(float *flowTemp, float *returnTemp, flo
 		temp = REMEHA_SHORT(reply.data() + 27);
 		*roomSetpoint = (float)temp/100;
 		
-		if (*roomTemp > 50 || *roomSetpoint > 50) {
+		if ((*roomTemp > 50) || (*roomSetpoint > 50) || (*roomTemp <= 0) || (*roomSetpoint <= 0)) {
 			// Filter false readings that still produce a valid crc
 			return false;
 		}
